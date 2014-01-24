@@ -728,19 +728,16 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
 //   const char* myStr = "100% broken";
 //   printf(myStr);   // Parses % as a format specifier
 
-template<typename T1>
-void format(FormatIterator& fmtIter, const T1& value1)
-{
-    fmtIter.accept(value1);
-    fmtIter.finish();
-}
-
-// General version for C++11
 template<typename T1, typename... Args>
 void format(FormatIterator& fmtIter, const T1& value1, const Args&... args)
 {
     fmtIter.accept(value1);
-    format(fmtIter, args...);
+    format(fmtIter, args...) ;    
+}
+template<typename T1>
+void format(FormatIterator& fmtIter, const T1& value1 ){
+    fmtIter.accept(value1);
+    fmtIter.finish() ;  
 }
 
 } // namespace detail
@@ -750,25 +747,28 @@ void format(FormatIterator& fmtIter, const T1& value1, const Args&... args)
 // Implement all the main interface functions here in terms of detail::format()
 
 // C++11 - the simple case
-template<typename T1, typename... Args>
-void format(std::ostream& out, const char* fmt, const T1& v1, const Args&... args)
+template<typename... Args>
+void format(std::ostream& out, const char* fmt, const Args&... args)
 {
     detail::FormatIterator fmtIter(out, fmt);
-    format(fmtIter, v1, args...);
+    format(fmtIter, args...);
+}
+inline void format(std::ostream& out, const char* fmt){
+    out << fmt ;  
 }
 
-template<typename T1, typename... Args>
-std::string format(const char* fmt, const T1& v1, const Args&... args)
+template<typename... Args>
+std::string format(const char* fmt, const Args&... args)
 {
     std::ostringstream oss;
-    format(oss, fmt, v1, args...);
+    format(oss, fmt, args...);
     return oss.str();
 }
 
-template<typename T1, typename... Args>
-void printf(const char* fmt, const T1& v1, const Args&... args)
+template<typename... Args>
+void printf(const char* fmt, const Args&... args)
 {
-    format(std::cout, fmt, v1, args...);
+    format(std::cout, fmt, args...);
 }
 
 } // namespace tinyformat
