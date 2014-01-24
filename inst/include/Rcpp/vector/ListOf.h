@@ -1,5 +1,5 @@
-#ifndef Rcpp_api_meat_ListOf_h_
-#define Rcpp_api_meat_ListOf_h_
+#ifndef Rcpp_vector_ListOf_h_
+#define Rcpp_vector_ListOf_h_
 
 // a define used to clean up some of the code repetition
 #define THIS static_cast<List>(list)[index]
