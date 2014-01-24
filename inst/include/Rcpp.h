@@ -33,6 +33,7 @@
 #include <Rcpp/Evaluator.h>
 
 #include <Rcpp/Vector.h>
+#include <Rcpp/vector/ListOf.h>
 #include <Rcpp/sugar/nona/nona.h>
 #include <Rcpp/Extractor.h>
 

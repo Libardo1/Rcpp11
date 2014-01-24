@@ -22,6 +22,7 @@
 #include <Rcpp/api/meat/Promise.h>
 #include <Rcpp/api/meat/DottedPairImpl.h>
 #include <Rcpp/api/meat/Vector.h>
+#include <Rcpp/api/meat/ListOf.h>
 #include <Rcpp/api/meat/Function.h>
 #include <Rcpp/api/meat/Matrix.h>
 #include <Rcpp/api/meat/Reference.h>
