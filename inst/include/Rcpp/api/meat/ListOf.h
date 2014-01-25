@@ -9,129 +9,129 @@
 namespace Rcpp {
 
   // operator=
-  template <typename T>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator=(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator=(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = RHS;
     return *this;
   }
 
-  template <typename T>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator=(T vector) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator=(T vector) {
     THIS = vector;
     return *this;
   }
 
   // operator+
-  template <typename T>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator+(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator+(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) + as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator+(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator+(const U& rhs) {
     THIS = as<T>(THIS) + rhs;
     return *this;
   }
 
-  template <typename T>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator+=(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator+=(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) + as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator+=(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator+=(const U& rhs) {
     THIS = as<T>(THIS) + rhs;
     return *this;
   }
 
   // operator-
-  template <typename T>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator-(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator-(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) - as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator-(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator-(const U& rhs) {
     THIS = as<T>(THIS) - rhs;
     return *this;
   }
 
-  template <typename T>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator-=(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator-=(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) - as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator-=(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator-=(const U& rhs) {
     THIS = as<T>(THIS) - rhs;
     return *this;
   }
 
   // operator*
-  template <typename T>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator*(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator*(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) * as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator*(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator*(const U& rhs) {
     THIS = as<T>(THIS) * rhs;
     return *this;
   }
 
-  template <typename T>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator*=(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator*=(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) * as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator*=(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator*=(const U& rhs) {
     THIS = as<T>(THIS) * rhs;
     return *this;
   }
 
   // operator/
-  template <typename T>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator/(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator/(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) / as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy ListOf<T>::ListOfProxy::operator/(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy ListOf<T, StoragePolicy>::ListOfProxy::operator/(const U& rhs) {
     THIS = as<T>(THIS) / rhs;
     return *this;
   }
 
-  template <typename T>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator/=(const ListOf<T>::ListOfProxy& rhs) {
+  template <typename T, template <class> class StoragePolicy>
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator/=(const ListOf<T, StoragePolicy>::ListOfProxy& rhs) {
     THIS = as<T>(THIS) / as<T>(RHS);
     return *this;
   }
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy>
   template <typename U>
-  typename ListOf<T>::ListOfProxy& ListOf<T>::ListOfProxy::operator/=(const U& rhs) {
+  typename ListOf<T, StoragePolicy>::ListOfProxy& ListOf<T, StoragePolicy>::ListOfProxy::operator/=(const U& rhs) {
     THIS = as<T>(THIS) / rhs;
     return *this;
   }
 
   /*
-  template <typename T>
-  void ListOf<T>::validate() {
+  template <typename T, template <class> class StoragePolicy>
+  void validate() {
     for (int i=0; i < this->size(); ++i) {
       if (!is<T>( static_cast<List&>(*this)[i] )) {
         stop("Invalid ListOf<%s> object: expected %s but got %s at index %i",

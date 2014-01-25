@@ -8,12 +8,11 @@
 
 namespace Rcpp {
 
-  template <typename T>
+  template <typename T, template <class> class StoragePolicy = PreserveStorage>
   class ListOf: public List {
 
   public:
 
-    // ListOfProxy class for distinguishing [] read/write
     class ListOfProxy {
     public:
 
