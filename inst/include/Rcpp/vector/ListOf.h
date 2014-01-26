@@ -94,6 +94,9 @@ namespace Rcpp {
     template <typename U>
     ListOf(const U& data_): List(data_) {}
 
+    template <typename U>
+    ListOf( std::initializer_list<U> l ): List( wrap(l) ) {}
+
     operator SEXP() const {
       return wrap(static_cast<const List&>(*this));
     }
@@ -114,6 +117,7 @@ namespace Rcpp {
         }
       }
       stop("No name '%s' in the names of the list supplied", str);
+      return ListOfProxy(*this, -1); // silence compiler
     }
 
     const ListOfProxy operator[](std::string str) const {
@@ -124,6 +128,7 @@ namespace Rcpp {
         }
       }
       stop("No name '%s' in the names of the list supplied", str);
+      return ListOfProxy(*this, -1); // silence compiler
     }
 
     // void validate();
