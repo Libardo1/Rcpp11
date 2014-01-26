@@ -13,80 +13,6 @@ namespace Rcpp {
 
   public:
 
-    class ListOfProxy {
-    public:
-
-      ListOfProxy(ListOf& list_, int index_): list(list_), index(index_) {
-        RCPP_DEBUG("ListOfProxy(ListOf& list_, int index_): list(list_), index(index_)\n");
-      }
-
-      ~ListOfProxy() {
-        RCPP_DEBUG("~ListOfProxy()\n");
-      }
-
-      // assignment operators
-      ListOfProxy& operator=(const ListOfProxy& rhs);
-      ListOfProxy& operator=(T vector);
-
-      // addition operators
-      ListOfProxy operator+(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy operator+(const U& rhs);
-
-      ListOfProxy& operator+=(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy& operator+=(const U& rhs);
-
-      // subtraction operators
-      ListOfProxy operator-(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy operator-(const U& rhs);
-
-      ListOfProxy& operator-=(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy& operator-=(const U& rhs);
-
-      // multiplication operators
-      ListOfProxy operator*(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy operator*(const U& rhs);
-
-      ListOfProxy& operator*=(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy& operator*=(const U& rhs);
-
-      // division operators
-      ListOfProxy operator/(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy operator/(const U& rhs);
-
-      ListOfProxy& operator/=(const ListOfProxy& rhs);
-
-      template <typename U>
-      ListOfProxy& operator/=(const U& rhs);
-
-      // read
-      inline operator T() const {
-        RCPP_DEBUG("operator T() const\n");
-        return as<T>(THIS);
-      }
-
-      // TODO: reference operator
-
-    private:
-      ListOf& list;
-      int index;
-    }; // ListOfProxy
-
-    friend class ListOfProxy;
-
     ListOf() {}
 
     ListOf(SEXP data_): List(data_) {}
@@ -101,37 +27,37 @@ namespace Rcpp {
       return wrap(static_cast<const List&>(*this));
     }
 
-    ListOfProxy operator[](int i) {
-      return ListOfProxy(*this, i);
+    ListOfProxy<T, StoragePolicy> operator[](int i) {
+      return ListOfProxy<T, StoragePolicy>(*this, i);
     }
 
-    const ListOfProxy operator[](int i) const {
-      return ListOfProxy(const_cast< ListOf<T>& >(*this), i);
+    const ListOfProxy<T, StoragePolicy> operator[](int i) const {
+      return ListOfProxy<T, StoragePolicy>(const_cast< ListOf<T>& >(*this), i);
     }
 
-    ListOfProxy operator[](std::string str) {
+    ListOfProxy<T, StoragePolicy> operator[](std::string str) {
       std::vector<std::string> names = as< std::vector<std::string> >(this->attr("names"));
       for (int i=0; i < this->size(); ++i) {
         if (names[i] == str) {
-          return ListOfProxy(*this, i);
+          return ListOfProxy<T, StoragePolicy>(*this, i);
         }
       }
       stop("No name '%s' in the names of the list supplied", str);
-      return ListOfProxy(*this, -1); // silence compiler
+      return ListOfProxy<T, StoragePolicy>(*this, -1); // silence compiler
     }
 
-    const ListOfProxy operator[](std::string str) const {
+    const ListOfProxy<T, StoragePolicy> operator[](std::string str) const {
       std::vector<std::string> names = as< std::vector<std::string> >(this->attr("names"));
       for (int i=0; i < this->size(); ++i) {
         if (names[i] == str) {
-          return ListOfProxy(const_cast< ListOf<T>& >(*this), i);
+          return ListOfProxy<T, StoragePolicy>(const_cast< ListOf<T>& >(*this), i);
         }
       }
       stop("No name '%s' in the names of the list supplied", str);
-      return ListOfProxy(*this, -1); // silence compiler
+      return ListOfProxy<T, StoragePolicy>(*this, -1); // silence compiler
     }
 
-    // void validate();
+    void validate();
 
   }; // ListOf<T>
 
