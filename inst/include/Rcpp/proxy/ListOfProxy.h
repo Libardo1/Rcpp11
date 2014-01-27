@@ -14,9 +14,7 @@ template <typename T, template <class> class StoragePolicy = PreserveStorage>
 class ListOfProxy: public GenericProxy< ListOfProxy<T> > {
 public:
 
-  typedef ListOf<T, StoragePolicy> ListOf;
-
-  ListOfProxy(ListOf& list_, int index_): list(list_), index(index_) {
+  ListOfProxy(ListOf<T, StoragePolicy>& list_, int index_): list(list_), index(index_) {
     RCPP_DEBUG("ListOfProxy(ListOf& list_, int index_): list(list_), index(index_)\n");
   }
 
@@ -81,7 +79,7 @@ public:
   // TODO: reference operator
 
 private:
-  ListOf& list;
+  ListOf<T, StoragePolicy>& list;
   int index;
 }; // ListOfProxy
 
