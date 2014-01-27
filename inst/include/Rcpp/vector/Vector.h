@@ -123,6 +123,8 @@ public:
     inline const_iterator begin() const{ return cache.get_const() ; }
     inline const_iterator end() const{ return cache.get_const() + size() ; }
 
+    #include <Rcpp/vector/subset.h>
+
     inline Proxy operator[]( int i ){ return cache.ref(i) ; }
     inline const_Proxy operator[]( int i ) const { return cache.ref(i) ; }
 

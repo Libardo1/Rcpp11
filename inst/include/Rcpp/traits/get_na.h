@@ -4,7 +4,7 @@
 namespace Rcpp{
 namespace traits{
 
-template<int RTYPE> 
+template<int RTYPE>
 typename storage_type<RTYPE>::type get_na() ;
 
 template<>
@@ -17,7 +17,7 @@ template<>
 inline double get_na<REALSXP>(){ return NA_REAL ; }
 
 template<>
-inline Rcomplex get_na<CPLXSXP>(){ 
+inline Rcomplex get_na<CPLXSXP>(){
 	Rcomplex x ;
 	x.r = NA_REAL ;
 	x.i = NA_REAL ;
@@ -26,6 +26,10 @@ inline Rcomplex get_na<CPLXSXP>(){
 
 template<>
 inline SEXP get_na<STRSXP>(){ return NA_STRING ; }
+
+// this is the list equivalent of an NA value
+template<>
+inline SEXP get_na<VECSXP>(){ return R_NilValue; }
 
 }
 }
