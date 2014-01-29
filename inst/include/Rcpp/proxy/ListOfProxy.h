@@ -23,52 +23,52 @@ public:
   }
 
   // assignment operators
-  ListOfProxy& operator=(const ListOfProxy& rhs);
-  ListOfProxy& operator=(T vector);
+  inline ListOfProxy& operator=(const ListOfProxy& rhs);
+  inline ListOfProxy& operator=(T vector);
 
   // addition operators
-  ListOfProxy operator+(const ListOfProxy& rhs);
+  inline ListOfProxy operator+(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy operator+(const U& rhs);
+  inline ListOfProxy operator+(const U& rhs);
 
-  ListOfProxy& operator+=(const ListOfProxy& rhs);
+  inline ListOfProxy& operator+=(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy& operator+=(const U& rhs);
+  inline ListOfProxy& operator+=(const U& rhs);
 
   // subtraction operators
-  ListOfProxy operator-(const ListOfProxy& rhs);
+  inline ListOfProxy operator-(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy operator-(const U& rhs);
+  inline ListOfProxy operator-(const U& rhs);
 
-  ListOfProxy& operator-=(const ListOfProxy& rhs);
+  inline ListOfProxy& operator-=(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy& operator-=(const U& rhs);
+  inline ListOfProxy& operator-=(const U& rhs);
 
   // multiplication operators
-  ListOfProxy operator*(const ListOfProxy& rhs);
+  inline ListOfProxy operator*(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy operator*(const U& rhs);
+  inline ListOfProxy operator*(const U& rhs);
 
-  ListOfProxy& operator*=(const ListOfProxy& rhs);
+  inline ListOfProxy& operator*=(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy& operator*=(const U& rhs);
+  inline ListOfProxy& operator*=(const U& rhs);
 
   // division operators
-  ListOfProxy operator/(const ListOfProxy& rhs);
+  inline ListOfProxy operator/(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy operator/(const U& rhs);
+  inline ListOfProxy operator/(const U& rhs);
 
-  ListOfProxy& operator/=(const ListOfProxy& rhs);
+  inline ListOfProxy& operator/=(const ListOfProxy& rhs);
 
   template <typename U>
-  ListOfProxy& operator/=(const U& rhs);
+  inline ListOfProxy& operator/=(const U& rhs);
 
   // read
   inline operator T() const {

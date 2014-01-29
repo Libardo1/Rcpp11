@@ -16,8 +16,8 @@ namespace Rcpp {
   }
 
   template <typename T, template <class> class StoragePolicy>
-  ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator=(T vector) {
-    THIS = vector;
+  ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator=(T rhs) {
+    THIS = rhs;
     return *this;
   }
 
@@ -37,14 +37,14 @@ namespace Rcpp {
 
   template <typename T, template <class> class StoragePolicy>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator+=(const ListOfProxy<T, StoragePolicy>& rhs) {
-    THIS = as<T>(THIS) + as<T>(RHS);
+    as<T>(THIS) += as<T>(RHS);
     return *this;
   }
 
   template <typename T, template <class> class StoragePolicy>
   template <typename U>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator+=(const U& rhs) {
-    THIS = as<T>(THIS) + rhs;
+    as<T>(THIS) += rhs;
     return *this;
   }
 
@@ -64,14 +64,14 @@ namespace Rcpp {
 
   template <typename T, template <class> class StoragePolicy>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator-=(const ListOfProxy<T, StoragePolicy>& rhs) {
-    THIS = as<T>(THIS) - as<T>(RHS);
+    as<T>(THIS) -= as<T>(RHS);
     return *this;
   }
 
   template <typename T, template <class> class StoragePolicy>
   template <typename U>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator-=(const U& rhs) {
-    THIS = as<T>(THIS) - rhs;
+    as<T>(THIS) -= rhs;
     return *this;
   }
 
@@ -91,14 +91,14 @@ namespace Rcpp {
 
   template <typename T, template <class> class StoragePolicy>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator*=(const ListOfProxy<T, StoragePolicy>& rhs) {
-    THIS = as<T>(THIS) * as<T>(RHS);
+    as<T>(THIS) *= as<T>(RHS);
     return *this;
   }
 
   template <typename T, template <class> class StoragePolicy>
   template <typename U>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator*=(const U& rhs) {
-    THIS = as<T>(THIS) * rhs;
+    as<T>(THIS) *= rhs;
     return *this;
   }
 
@@ -118,14 +118,14 @@ namespace Rcpp {
 
   template <typename T, template <class> class StoragePolicy>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator/=(const ListOfProxy<T, StoragePolicy>& rhs) {
-    THIS = as<T>(THIS) / as<T>(RHS);
+    as<T>(THIS) /= as<T>(RHS);
     return *this;
   }
 
   template <typename T, template <class> class StoragePolicy>
   template <typename U>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator/=(const U& rhs) {
-    THIS = as<T>(THIS) / rhs;
+    as<T>(THIS) /= rhs;
     return *this;
   }
 
