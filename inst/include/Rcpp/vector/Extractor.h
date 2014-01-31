@@ -15,7 +15,7 @@ class Extractor {
   explicit Extractor(const VECTOR& vec_, const T& other_): vec(vec_), other(other_) {};
   
   inline operator SEXP() const {
-    return wrap( subset_impl(vec, other) );
+    return subset_impl(vec, other).get__();
   }
   
   inline operator VECTOR() const {
