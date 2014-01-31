@@ -134,32 +134,16 @@ public:
         return NameProxy( *this, name ) ;
     }
     
-    inline NameProxy operator[]( const char* name ){
-        return NameProxy( *this, std::string(name) ) ;
-    }
-    
     inline NameProxy at( const std::string& name ){
         return NameProxy( *this, name ) ;
-    }
-    
-    inline NameProxy at( const char* name ){
-        return NameProxy( *this, std::string(name) ) ;
     }
     
     inline NameProxy at( const std::string& name ) const {
         return NameProxy( *this, name ) ;
     }
     
-    inline NameProxy at( const char* name ) const {
-        return NameProxy( *this, std::string(name) ) ;
-    }
-    
     inline NameProxy operator[]( const std::string& name ) const {
         return NameProxy( const_cast<Vector&>(*this), name ) ;
-    }
-    
-    inline NameProxy operator[]( const char* name ) const {
-        return NameProxy( const_cast<Vector&>(*this), std::string(name) ) ;
     }
     
     template <typename T>
