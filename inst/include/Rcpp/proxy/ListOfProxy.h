@@ -31,6 +31,11 @@ public:
 
   template <typename U>
   inline ListOfProxy operator+(const U& rhs);
+  
+  template <typename U>
+  friend inline ListOfProxy operator+(const U& lhs, const ListOfProxy& rhs) {
+    return const_cast<ListOfProxy<T, StoragePolicy>&>(rhs).operator+(lhs);
+  }
 
   inline ListOfProxy& operator+=(const ListOfProxy& rhs);
 
@@ -42,6 +47,11 @@ public:
 
   template <typename U>
   inline ListOfProxy operator-(const U& rhs);
+  
+  template <typename U>
+  friend inline ListOfProxy operator-(const U& lhs, const ListOfProxy& rhs) {
+    return const_cast<ListOfProxy<T, StoragePolicy>&>(rhs).operator-(lhs);
+  }
 
   inline ListOfProxy& operator-=(const ListOfProxy& rhs);
 
@@ -53,6 +63,11 @@ public:
 
   template <typename U>
   inline ListOfProxy operator*(const U& rhs);
+  
+  template <typename U>
+  friend inline ListOfProxy operator*(const U& lhs, const ListOfProxy& rhs) {
+    return const_cast<ListOfProxy<T, StoragePolicy>&>(rhs).operator*(lhs);
+  }
 
   inline ListOfProxy& operator*=(const ListOfProxy& rhs);
 
@@ -64,6 +79,11 @@ public:
 
   template <typename U>
   inline ListOfProxy operator/(const U& rhs);
+  
+  template <typename U>
+  friend inline ListOfProxy operator/(const U& lhs, const ListOfProxy& rhs) {
+    return const_cast<ListOfProxy<T, StoragePolicy>&>(rhs).operator/(lhs);
+  }
 
   inline ListOfProxy& operator/=(const ListOfProxy& rhs);
 
@@ -74,6 +94,10 @@ public:
   inline operator T() const {
     RCPP_DEBUG("operator T() const\n");
     return as<T>(THIS);
+  }
+  
+  inline operator SEXP() const {
+    return THIS;
   }
 
   // TODO: reference operator
