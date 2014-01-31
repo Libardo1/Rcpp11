@@ -132,7 +132,7 @@ namespace Rcpp {
   template <typename T, template <class> class StoragePolicy>
   void ListOf<T, StoragePolicy>::validate() {
     for (int i=0; i < this->size(); ++i) {
-      if (!is<T>( static_cast<List&>(*this)[i] )) {
+      if (TYPEOF( static_cast<List&>(*this)[i] ) != TYPEOF( T() ) ) {
         stop("Invalid ListOf<%s> object: expected %s but got %s at index %i",
           DEMANGLE(T),
           Rf_type2char( TYPEOF( T() ) ),

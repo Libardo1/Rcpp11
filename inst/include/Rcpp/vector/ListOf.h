@@ -56,7 +56,7 @@ namespace Rcpp {
       stop("No name '%s' in the names of the list supplied", str);
       return ListOfProxy<T, StoragePolicy>(*this, -1); // silence compiler
     }
-
+    
     void validate();
 
   }; // ListOf<T>
