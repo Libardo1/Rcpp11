@@ -2,6 +2,7 @@
 #define Rcpp__vector__Vector_h
 
 #include <Rcpp/vector/concat.h>
+#include <Rcpp/vector/Extractor.h>
 
 namespace Rcpp{
 
@@ -123,25 +124,31 @@ public:
     inline const_iterator begin() const{ return cache.get_const() ; }
     inline const_iterator end() const{ return cache.get_const() + size() ; }
 
-    #include <Rcpp/vector/subset.h>
-
     inline Proxy operator[]( int i ){ return cache.ref(i) ; }
     inline const_Proxy operator[]( int i ) const { return cache.ref(i) ; }
 
     inline Proxy at( int i ){ return cache.ref(i) ; }
     inline const_Proxy at( int i ) const { return cache.ref(i) ; }
 
-    inline NameProxy operator[]( const std::string& name ){
+    inline NameProxy operator[]( const char* name ){
         return NameProxy( *this, name ) ;
     }
-    inline NameProxy at( const std::string& name ){
+    
+    inline NameProxy at( const char* name ){
         return NameProxy( *this, name ) ;
     }
-    inline NameProxy at( const std::string& name ) const {
+    
+    inline NameProxy at( const char* name ) const {
         return NameProxy( *this, name ) ;
     }
-    inline NameProxy operator[]( const std::string& name ) const {
+    
+    inline NameProxy operator[]( const char* name ) const {
         return NameProxy( const_cast<Vector&>(*this), name ) ;
+    }
+    
+    template <typename T>
+    inline Extractor<RTYPE, StoragePolicy, T> operator[](const T& x) {
+       return Extractor<RTYPE, StoragePolicy, T>(*this, x);
     }
 
     Vector& sort(){
