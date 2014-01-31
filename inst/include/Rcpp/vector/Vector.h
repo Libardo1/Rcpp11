@@ -163,7 +163,11 @@ public:
     }
     
     template <typename T>
-    inline Extractor<RTYPE, StoragePolicy, T> operator[](const T& x) {
+    typename std::enable_if<
+      std::is_class<T>::value,
+      Extractor<RTYPE, StoragePolicy, T>
+    >::type 
+    inline operator[](const T& x) {
        return Extractor<RTYPE, StoragePolicy, T>(*this, x);
     }
 
