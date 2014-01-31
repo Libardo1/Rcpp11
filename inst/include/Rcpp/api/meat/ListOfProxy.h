@@ -1,5 +1,5 @@
-#ifndef Rcpp_api_meat_ListOf_h_
-#define Rcpp_api_meat_ListOf_h_
+#ifndef Rcpp_api_meat_ListOfProxy_h_
+#define Rcpp_api_meat_ListOfProxy_h_
 
 // a define used to clean up some of the code repetition
 #define THIS static_cast<List>(this->list)[this->index]
@@ -34,7 +34,7 @@ namespace Rcpp {
     THIS = as<T>(THIS) + rhs;
     return *this;
   }
-
+  
   template <typename T, template <class> class StoragePolicy>
   ListOfProxy<T, StoragePolicy>& ListOfProxy<T, StoragePolicy>::operator+=(const ListOfProxy<T, StoragePolicy>& rhs) {
     as<T>(THIS) += as<T>(RHS);

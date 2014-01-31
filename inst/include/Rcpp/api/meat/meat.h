@@ -12,6 +12,7 @@
 #include <Rcpp/api/meat/AttributeProxy.h>
 #include <Rcpp/api/meat/FieldProxy.h>
 #include <Rcpp/api/meat/DottedPairProxy.h>
+#include <Rcpp/api/meat/ListOfProxy.h>
 #include <Rcpp/api/meat/PreserveStorage.h>
 #include <Rcpp/api/meat/NoProtectStorage.h>
 #include <Rcpp/api/meat/Dimension.h>
@@ -22,7 +23,6 @@
 #include <Rcpp/api/meat/Promise.h>
 #include <Rcpp/api/meat/DottedPairImpl.h>
 #include <Rcpp/api/meat/Vector.h>
-#include <Rcpp/api/meat/ListOf.h>
 #include <Rcpp/api/meat/Function.h>
 #include <Rcpp/api/meat/Matrix.h>
 #include <Rcpp/api/meat/Reference.h>
