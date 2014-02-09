@@ -8,7 +8,7 @@ Source C++ Code from a File or String
 and RCPP_MODULE declarations. A shared library is then built and its exported functions and Rcpp modules are made available in the specified environment.
 }
 \usage{
-sourceCpp(file = "", code = NULL, env = globalenv(), 
+sourceCpp(file = "", code = NULL, env = globalenv(), embeddedR = TRUE,
           rebuild = FALSE, showOutput = verbose, 
           verbose = getOption("verbose"))
 }
@@ -21,6 +21,9 @@ sourceCpp(file = "", code = NULL, env = globalenv(),
 }
   \item{env}{
     Environment where the R functions and modules should be made available.
+}
+  \item{embeddedR}{
+    \code{TRUE} to run embedded R code chunks.    
 }
   \item{rebuild}{
     Force a rebuild of the shared library.

@@ -2,21 +2,11 @@
 #define Rcpp_api_meat_meat_h
 
 #include <Rcpp/api/meat/structure.h>
-#include <Rcpp/api/meat/NodeProxy.h>
-#include <Rcpp/api/meat/TagProxy.h>
-#include <Rcpp/api/meat/ProtectedProxy.h>
-#include <Rcpp/api/meat/Binding.h>
-#include <Rcpp/api/meat/NamesProxy.h>
-#include <Rcpp/api/meat/SlotProxy.h>
+
 #include <Rcpp/api/meat/StretchyList.h>
-#include <Rcpp/api/meat/AttributeProxy.h>
-#include <Rcpp/api/meat/FieldProxy.h>
-#include <Rcpp/api/meat/DottedPairProxy.h>
-#include <Rcpp/api/meat/ListOfProxy.h>
 #include <Rcpp/api/meat/PreserveStorage.h>
 #include <Rcpp/api/meat/NoProtectStorage.h>
 #include <Rcpp/api/meat/Dimension.h>
-#include <Rcpp/api/meat/RObject.h>
 #include <Rcpp/api/meat/Language.h>
 #include <Rcpp/api/meat/DataFrame.h>
 #include <Rcpp/api/meat/Environment.h>
@@ -31,6 +21,7 @@
 #include <Rcpp/api/meat/as.h>
 #include <Rcpp/api/meat/export.h>
 #include <Rcpp/api/meat/protection.h>
+
 #include <Rcpp/api/meat/wrap.h>
 
 #endif

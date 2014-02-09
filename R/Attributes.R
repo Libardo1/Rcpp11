@@ -2,16 +2,22 @@
 sourceCpp <- function(file = "",
                       code = NULL,
                       env = globalenv(),
+                      embeddedR = TRUE,
                       rebuild = FALSE,
                       showOutput = verbose,
-                      verbose = getOption("verbose")) {
+                      verbose = getOption("verbose")
+                      ) {
 
-    # resolve code into a file if necessary
+    # resolve code into a file if necessary. also track the working
+    # directory to source the R embedded code chunk within
     if (!missing(code)) {
+        rWorkingDir <- getwd() 
         file <- tempfile(fileext = ".cpp")
         con <- file(file, open = "w")
         writeLines(code, con)
         close(con)
+    } else {
+        rWorkingDir <- dirname(file)
     }
 
     # resolve the file path
@@ -146,8 +152,9 @@ sourceCpp <- function(file = "",
     }
 
     # source the embeddedR
-    if (length(context$embeddedR) > 0) {
+    if (isTRUE(embeddedR) && length(context$embeddedR) > 0) {
         srcConn <- textConnection(context$embeddedR)
+        setwd(rWorkingDir) # will be reset by previous on.exit handler
         source(file=srcConn, echo=TRUE)
     }
 
@@ -387,7 +394,7 @@ sourceCppFunction <- function(func, isVoid, dll, symbol) {
 
     args <- names(formals(func))
 
-    body <- quote( .Call( EXTERNALNAME, ARG ) )[ c(1:2, rep(3, length(args))) ]
+    body <- quote( CALL_PLACEHOLDER( EXTERNALNAME, ARG ) )[ c(1:2, rep(3, length(args))) ]
 
     for (i in seq(along = args)){
         if(identical(args[i], "...")){
