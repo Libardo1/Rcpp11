@@ -52,31 +52,25 @@ private:
 
     template <unsigned int TT> // default: for INTSXP, LGLSXP
     double get__impl( traits::identity<traits::number_to_type<TT>> ) const {
-      double s = 0;
-      int n = object.size();
-      for (int i=0; i < n; ++i) {
-        s += object[i];
-      }
-      return s / n;
+      double s = std::accumulate(object.begin(), object.end(), 0.0);
+      return s / object.size();
     }
 
     // REALSXP
     STORAGE get__impl( traits::identity<traits::number_to_type<REALSXP>> ) const {
-      long double s = 0; // long double offers extra precision where possible
+
       int n = object.size();
 
       // first pass
-      for (int i=0; i < n; ++i) {
-        s += object[i];
-      }
+      long double s = std::accumulate(object.begin(), object.end(), 0.0L);
       s /= n;
 
       // second pass
       if (R_FINITE( (double) s)) {
         long double t = 0;
-        for (int i=0; i < n; ++i) {
-          t += object[i] - s;
-        }
+        std::for_each(object.begin(), object.end(), [&](double elem) {
+          t += elem - s;
+        });
         s += t / n;
       }
       return (double) s;
